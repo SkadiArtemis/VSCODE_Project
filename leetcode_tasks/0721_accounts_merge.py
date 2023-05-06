@@ -3,6 +3,10 @@ from collections import defaultdict
 
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        """
+        merge has to be dfs
+        account id
+        """
         email_to_ids = defaultdict(set)
         for i, v in enumerate(accounts):
             for email in v[1:]:
@@ -29,6 +33,12 @@ class Solution:
 
 
     def accountsMerge_error(self, accounts: List[List[str]]) -> List[List[str]]:
+        """
+        data structure
+        map: email -> id, if exist mapping, then merge
+        map: id -> [email]
+        mistake: not dfs, search on the first level
+        """
         email_id = {}
         id_emails = defaultdict(list)
         for i in range(len(accounts)):
@@ -51,4 +61,4 @@ class Solution:
         for k, v in id_emails.items():
             ret.append([accounts[k][0]] + sorted(v))
 
-        return 
+        return ret
